@@ -25,5 +25,10 @@ jobs:
         # 값이 있기는 한가? 
         echo "789"
         echo  "NAVER_TEST_ENV_VALUE=NY" >> $GITHUB_ENV
+        echo "78911"
+        echo $NAVER_TEST_ENV_VALUE
+        echo "789123"
         # 실행하는 값.
+        echo "78912111"
         python ./env_test.py
+        echo "78908970"
