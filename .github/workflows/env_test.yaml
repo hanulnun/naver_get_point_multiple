@@ -1,0 +1,22 @@
+name: githut env test
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3    
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        cache: 'pip' # caching pip dependencies
+    - name: do check and notify
+      id: check_list
+      run: |
+        # 실행해보자 
+        python ./env_test.py
+    
