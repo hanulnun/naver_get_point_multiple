@@ -62,7 +62,7 @@ class NaverUser(requests.Session):
       return (False, 0)
 
     point_url = "https://new-m.pay.naver.com/api/pointsHistory/pointsamount"
-    response = self.get(point_url)
+    response = self.post(point_url)
 
     if response.status_code != 200:
       self.available = False
