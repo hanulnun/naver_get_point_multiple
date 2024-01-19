@@ -18,8 +18,12 @@ jobs:
       id: check_list
       run: |
         # 실행해보자 
+        echo '123'
+
         echo $NAVER_TEST_ENV_VALUE
+        echo '456'
         # 값이 있기는 한가? 
+        echo "789"
         echo  "NAVER_TEST_ENV_VALUE=NY" >> $GITHUB_ENV
         # 실행하는 값.
         python ./env_test.py
