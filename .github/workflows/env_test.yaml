@@ -16,6 +16,8 @@ jobs:
         cache: 'pip' # caching pip dependencies
     - name: do check and notify
       id: check_list
+      env:
+        NAVER_TEST_ENV_VALUE: ${{vars.NAVER_TEST_ENV_VALUE}}
       run: |
         # 실행해보자 
         echo '123'
