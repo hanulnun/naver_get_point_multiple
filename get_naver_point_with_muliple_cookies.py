@@ -52,7 +52,8 @@ class NaverUser(requests.Session):
     if available != None and available == "N":
       self.available = False
 
-    cookie = requests.utils.cookiejar_from_dict(self.data["cookie"])
+
+    cookie = requests.utils.cookiejar_from_dict(make_cookiejar_dict(self.data["cookie"]))
     self.cookies.update(cookie)
 
   # 포인트를 얻어온다. 리턴값은 (성공/실패 , 포인트 잔여 값)

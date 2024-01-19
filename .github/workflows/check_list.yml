@@ -27,7 +27,6 @@ jobs:
       run: |
         # 실행해보자 
         python ./get_naver_point_with_muliple_cookies.py
-        cat outputs >> $GITHUB_OUTPUT
     - name: git setting
       run: |
         git config --local user.email "my@email.com"
