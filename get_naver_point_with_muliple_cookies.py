@@ -48,7 +48,7 @@ class NaverUser(requests.Session):
     self.point = 0
       
     self.available = True
-    available = os.environ.get[self.id]
+    available = os.environ.get(self.id)
     if available != None and available == "N":
       self.available = False
 
