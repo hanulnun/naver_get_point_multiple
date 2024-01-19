@@ -18,5 +18,7 @@ jobs:
       id: check_list
       run: |
         # 실행해보자 
+        echo  'NAVER_TEST_ENV_VALUE=NY' >> $GITHUB_ENV
         python ./env_test.py
+
     
