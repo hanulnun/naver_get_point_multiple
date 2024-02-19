@@ -70,7 +70,7 @@ class NaverUser(requests.Session):
     # print(response.text)
     data = json.loads(response.text)
 
-    if (data["result"] != None and data["result"]["reward"] and data["result"]["reward"]["balanceAmount"]):
+    if (data["result"] != None and data["result"]["reward"] and data["result"]["reward"]["balanceAmount"] != None):
       return (True, data["result"]["reward"]["balanceAmount"])
 
     #로그인은 정상적으로 성공했는데 금액이 없는경우는 뭘까? 
