@@ -1,4 +1,4 @@
-name: get naver point with/out actions(saved cookie)
+name: get naver point on self-hosted
 
 on:
   push:
