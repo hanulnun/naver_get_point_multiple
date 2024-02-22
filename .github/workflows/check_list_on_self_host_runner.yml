@@ -1,0 +1,50 @@
+name: get naver point with/out actions(saved cookie)
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    # - cron:  '*/15 * * * *' # 15분에 한번씩 실행한다.
+    - cron:  '*/5 * * * *' # 로컬이니 5분에 한번씩 돌린다. 
+
+
+jobs:
+  build:
+    # runs-on: ubuntu-latest
+    # runs-on: self-hosted
+    runs-on: home_naver_multi
+    steps:
+    - uses: actions/checkout@v3    
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        cache: 'pip' # caching pip dependencies
+    - run: pip install -r requirements.txt
+    - name: do check and notify
+      id: check_list
+      env:
+        TELEGRAM_BOT_TOKEN: ${{secrets.TELEGRAM_BOT_TOKEN}}
+        TELEGRAM_CHAT_ID: ${{secrets.TELEGRAM_CHAT_ID}}
+        NAVER_USER_1: ${{secrets.NAVER_USER_1}}
+        NAVER_USER_2: ${{secrets.NAVER_USER_2}}
+        USER1: ${{vars.USER1}}
+        USER2: ${{vars.USER2}}
+      run: |
+        # 실행해보자 
+        python ./get_naver_point_with_muliple_cookies.py
+    - name: git setting
+      run: |
+        git config --local user.email "my@email.com"
+        git config --local user.name "깃허브액션" # 커밋에 포함될 이름
+    - name: git add tempLast file and commit
+      if: ${{ steps.check_list.outputs.list_count > 0 }}
+      run: |
+        echo "숫자는? ${{ steps.check_list.outputs.list_count }} "
+        git add visited_campaign_id.txt
+        git commit -m "자동 업데이트 진행" # 커밋 메세지
+    - name: push
+      if: ${{ steps.check_list.outputs.list_count > 0 }}
+      uses: ad-m/github-push-action@master
+      with:
+        branch: 'main'
+        github_token: ${{ secrets.GIT_TOKEN}}
