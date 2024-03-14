@@ -120,6 +120,7 @@ def save_visited_campaign_list(visited_campaign_id_list,  visited_campaign_id_fi
 if __name__ == "__main__":
   # 네이버 계정을 여러개 만들어 주자. 
   naver_account_list = []
+  naver_account_list.append(NaverUser(os.environ.get("NAVER_USER_3")))
   naver_account_list.append(NaverUser(os.environ.get("NAVER_USER_2")))
   naver_account_list.append(NaverUser(os.environ.get("NAVER_USER_1")))
 
