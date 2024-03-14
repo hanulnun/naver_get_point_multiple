@@ -122,7 +122,6 @@ if __name__ == "__main__":
   naver_account_list = []
   naver_account_list.append(NaverUser(os.environ.get("NAVER_USER_2")))
   naver_account_list.append(NaverUser(os.environ.get("NAVER_USER_1")))
-  naver_account_list.append(NaverUser(os.environ.get("NAVER_USER_3")))
 
   n = None
 
