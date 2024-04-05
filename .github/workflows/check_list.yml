@@ -28,6 +28,7 @@ jobs:
         NAVER_USER_1: ${{secrets.NAVER_USER_1}}
         NAVER_USER_2: ${{secrets.NAVER_USER_2}}
         NAVER_USER_3: ${{secrets.NAVER_USER_3}}
+        NAVER_USER_4: ${{secrets.NAVER_USER_4}}
         USER1: ${{vars.USER1}}
         USER2: ${{vars.USER2}}
       run: |
